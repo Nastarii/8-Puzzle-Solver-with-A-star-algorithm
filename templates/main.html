@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css')}}" />
+    <title>Sliding Tile Puzzle</title>
+</head>
+
+<body>
+    <h1> 8 Puzzle Game </h1>
+    <div id="container">
+        <ul>
+            <form class="tiles_post" method="post">
+                <div><input type="submit" name="action" value="{{aa}}"></div>
+                <div><input type="submit" name="action" value="{{ba}}"></div>
+                <div><input type="submit" name="action" value="{{ca}}"></div>
+                <div><input type="submit" name="action" value="{{ab}}"></div>
+                <div><input type="submit" name="action" value="{{bb}}"></div>
+                <div><input type="submit" name="action" value="{{cb}}"></div>
+                <div><input type="submit" name="action" value="{{ac}}"></div>
+                <div><input type="submit" name="action" value="{{bc}}"></div>
+                <div><input type="submit" name="action" value="{{cc}}"></div>
+            </form>
+        </ul>
+        <form class="tiles_post" method="post">
+            <div ><input class="shuffle_button" name="action" type="submit" value="Shuffle"></div>
+            <div ><input class="shuffle_button" name="action" type="submit" value="Instant Solve"></div>
+            <div ><input class="shuffle_button" name="action" type="submit" value="A* Solver"></div>
+        </form>
+        <h3>{{warning}}</h3>
+        <style> 
+            h3{
+                color: {{hex}}; 
+            }
+        </style>
+    </div>
+ 
+</body>
+
+</html>
