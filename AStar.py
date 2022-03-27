@@ -1,9 +1,6 @@
-from mimetypes import init
-from typing import AbstractSet
-from Puzzle8 import Puzzle8Environment
 import numpy as np
 
-class AStarSolver():
+class Search():
 
     goal = np.array([[1,2,3],[4,5,6],[7,8,0]])
 
@@ -88,7 +85,7 @@ class AStarSolver():
                 self.best_path.append(action)
                 break
     
-    def search(self):
+    def __call__(self):
         while self.h != 0:
             self.forward()
         
@@ -97,3 +94,9 @@ class AStarSolver():
 
         self.best_path.reverse()
         return self.best_path
+
+    def __getitem__(self,idx):
+        return self.best_path[idx]
+    
+    def __len__(self):
+        return len(self.best_path)

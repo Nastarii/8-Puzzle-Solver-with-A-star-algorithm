@@ -1,12 +1,11 @@
 from flask import Flask, render_template, request
-from Puzzle8 import Puzzle8Environment
-from AStar import AStarSolver
+from Puzzle8 import makeEnvironment
+from AStar import Search
 from time import sleep
 import numpy as np
 import os
 
-env = Puzzle8Environment()
-
+env = makeEnvironment()
 
 app = Flask(__name__, instance_relative_config=True)
 app.config.from_pyfile('config.py', silent=True)
@@ -48,14 +47,18 @@ def html():
         elif request.form["action"] == str(cc):
             env.try_move(2,2)
         elif request.form["action"] == "A* Solver":
-            svr = AStarSolver(env)
-            acts = svr.search()
-            for act in acts:
+            svr = Search(env)
+
+            for act in svr():
                 env.action(act)
                 sleep(1)
                 call_state()
+            
         elif request.form["action"] == "Instant Solve":
             env.current_state = np.array([[1,2,3],[4,5,6],[7,8,0]])
+
+            
+
     call_state()
     return render_template('main.html', aa= aa, ab= ab, ac= ac, \
                                         ba= ba, bb= bb, bc= bc, \

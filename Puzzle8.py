@@ -1,7 +1,7 @@
 import numpy as np
 import os
 
-class Puzzle8Environment():
+class makeEnvironment():
     
     goal_state = list(np.char.replace(np.hstack(np.arange(1,10)).astype(str),'9',''))
     initial_state = np.array([[1,2,3,],[4,5,6],[7,8,0]])
